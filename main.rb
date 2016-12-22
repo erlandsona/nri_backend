@@ -51,7 +51,7 @@ number_of_questions_needed_from_each_strand = questions_for_quiz / number_of_str
 
 
 if questions_for_quiz < number_of_strands
-  quiz_array = questions_for_quiz.times.map.with_index(rand(0...number_of_strands) do |strand_index|
+  quiz_array = questions_for_quiz.times.map.with_index(rand(0...number_of_strands)) do |strand_index|
     questions_matrix[strand_index.remainder number_of_strands].sample.sample[:question_id]
   end
 end
