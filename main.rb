@@ -68,11 +68,31 @@ if questions_for_quiz == number_of_strands
   exit
 end
 
-# if questions_for_quiz > number_of_strands and questions_for_quiz.remainder number_of_strands != 0
 
+# It's ugly and it only sort of works barely and I could spend more time on it but I wouldn't be confident
+# in this work.
+# standards_used = []
+# quiz_array = questions_for_quiz.times.map.with_index(rand(0...questions_matrix.length)) do |strand_index|
+#   strand = questions_matrix[strand_index.remainder questions_matrix.length]
+#   standards_group = strand - standards_used
+#   standard = standards_group.sample
+#   standards_used << standard
+#   question_id = standard.sample[:question_id]
+#   binding.pry
+#   question_id
 # end
+# puts quiz_array.join ', '
 
-  # quiz_array = questions_matrix.map do |strand|
+
+# NOTE / SUMMARY:
+# The primary problem with all these solutions looping through the strands
+# with conditions or not is that the standards end up being unequal because of randomness
+# or we end up with the wrong output which forces us to keep the state
+# of the strands / standards that have already been used during the generation process...
+
+
+# Goes through each strand regardless of questions_for_quiz...
+  # quiz_array = questions_matrix.flat_map do |strand|
   #   number_of_standards = strand.length
   #   if number_of_standards >= number_of_questions_needed_from_each_strand
   #     strand.flat_map(&:sample.(number_of_questions_needed_from_each_strand))
@@ -83,19 +103,18 @@ end
   #   #   strand[i.remainder number_of_standards]
   #   # end
   # end.map(&:[].(:question_id)) # return list of question_id's
-# end
 
-if questions_for_quiz.remainder number_of_strands == 0
-  number_of_flat_maps_to_perform = questions_for_quiz / number_of_strands
-  quiz_array = questions_matrix.cycle(number_of_flat_maps_to_perform) do |strand|
-    number_of_standards = strand.length
-    if number_of_standards >= number_of_questions_needed_from_each_strand
-      strand.flat_map(&:sample.(number_of_questions_needed_from_each_strand))
-    end
-  end.map(&:[].(:question_id))
-  puts quiz_array.join ', '
-  exit
-end
+# if questions_for_quiz.remainder number_of_strands == 0
+#   number_of_flat_maps_to_perform = questions_for_quiz / number_of_strands
+#   quiz_array = questions_matrix.cycle(number_of_flat_maps_to_perform) do |strand|
+#     number_of_standards = strand.length
+#     if number_of_standards >= number_of_questions_needed_from_each_strand
+#       strand.flat_map(&:sample.(number_of_questions_needed_from_each_strand))
+#     end
+#   end.map(&:[].(:question_id))
+#   puts quiz_array.join ', '
+#   exit
+# end
 
 # quiz_array = questions_matrix.flat_map do |strand|
 #   number_of_standards = strand.length
@@ -110,14 +129,6 @@ end
 # end.map(&:[].(:question_id)) # return list of question_id's
 
 
-
-# Doesn't keep track of standards already used. Could work in reverse if standards where the focus.
-# standards_used = []
-# quiz_array = questions_for_quiz.times.map.with_index(rand(0...questions_matrix.length)) do |strand_index|
-#   strand = questions_matrix[strand_index.remainder questions_matrix.length]
-#   standard = strand[rand(0...strand.length)]
-#   question_id = standard[rand(0...standard.length)][:question_id]
-# end
 
 
 # first_strand_index = rand(0...questions_matrix.length)
