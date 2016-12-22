@@ -70,8 +70,29 @@ end
 
 
 # what if we start with standards once we know questions_for_quiz is greater than strands?
+# This won't gaurantee each strand is used. It's very likely but not a hard constraint.
+# if questions_for_quiz < number_of_standards
+#   quiz_array =
+#     questions_table
+#     .group_by(&:[].(:standard_id)).values
+
+#   binding.pry
+
+#   puts quiz_array.join ', '
+#   exit
+# end
 
 
+# research # parse array like a tree ruby =>
+# http://stackoverflow.com/questions/22200172/recursive-function-to-generate-flat-array-from-hierarchical-array-ruby
+# not much help...
+#
+# research # quicksort video =>
+# https://www.youtube.com/watch?v=aQiWF4E8flQ
+#
+# research # quichsort ruby =>
+# https://gist.github.com/aspyct/3433278
+# Maybe this is relevant
 
 
 
