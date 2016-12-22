@@ -83,6 +83,13 @@ end
 # end
 
 
+
+# Seems like what I was looking for for a while. Just didn't know what it was called. Nice!
+# research # round robin sort ruby =>
+# http://stackoverflow.com/questions/10567249/round-robin-assignment-in-ruby
+
+
+# Less Helpful
 # research # parse array like a tree ruby =>
 # http://stackoverflow.com/questions/22200172/recursive-function-to-generate-flat-array-from-hierarchical-array-ruby
 # not much help...
