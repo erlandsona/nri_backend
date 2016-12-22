@@ -11,3 +11,5 @@ strand_id,strand_name,standard_id,standard_name,question_id,difficulty
 2,Verbs,5,Transitive Verbs,10,0.6
 2,Verbs,5,Transitive Verbs,11,0.4
 2,Verbs,6,Reflexive Verbs,12,0.2
+3,Verbs,7,Reflexive Verbs,13,0.2
+4,Verbs,8,Reflexive Verbs,14,0.2

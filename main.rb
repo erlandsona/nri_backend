@@ -54,6 +54,8 @@ if questions_for_quiz < number_of_strands
   quiz_array = questions_for_quiz.times.map.with_index(rand(0...number_of_strands)) do |strand_index|
     questions_matrix[strand_index.remainder number_of_strands].sample.sample[:question_id]
   end
+  puts quiz_array.join ', '
+  exit
 end
 
 if questions_for_quiz == number_of_strands
@@ -62,6 +64,8 @@ if questions_for_quiz == number_of_strands
     .group_by(&:[].(:strand_id)).values # returns [[]] where each child is a :strand
     .map(&:sample) # map over list of strands since that's how many questions we need and sample from the list of questions
     .map(&:[].(:question_id))
+  puts quiz_array.join ', '
+  exit
 end
 
 # if questions_for_quiz > number_of_strands and questions_for_quiz.remainder number_of_strands != 0
@@ -89,6 +93,8 @@ if questions_for_quiz.remainder number_of_strands == 0
       strand.flat_map(&:sample.(number_of_questions_needed_from_each_strand))
     end
   end.map(&:[].(:question_id))
+  puts quiz_array.join ', '
+  exit
 end
 
 # quiz_array = questions_matrix.flat_map do |strand|
@@ -112,8 +118,6 @@ end
 #   standard = strand[rand(0...strand.length)]
 #   question_id = standard[rand(0...standard.length)][:question_id]
 # end
-
-puts quiz_array.join ', '
 
 
 # first_strand_index = rand(0...questions_matrix.length)
