@@ -31,6 +31,7 @@ if questions_table.length < 1 then abort "Please create data/questions.csv with 
 
 # If user only needs one question just randomly pick one.
 if questions_for_quiz == 1
+  puts "1"
   puts questions_table[:question_id].sample
   exit
 end
@@ -54,6 +55,7 @@ if questions_for_quiz < number_of_strands
   quiz_array = questions_for_quiz.times.map.with_index(rand(0...number_of_strands)) do |strand_index|
     questions_matrix[strand_index.remainder number_of_strands].sample.sample[:question_id]
   end
+  puts "<"
   puts quiz_array.join ', '
   exit
 end
@@ -64,9 +66,12 @@ if questions_for_quiz == number_of_strands
     .group_by(&:[].(:strand_id)).values # returns [[]] where each child is a :strand
     .map(&:sample) # map over list of strands since that's how many questions we need and sample from the list of questions
     .map(&:[].(:question_id))
+  puts "=="
   puts quiz_array.join ', '
   exit
 end
+
+
 
 
 # It's ugly and it only sort of works barely and I could spend more time on it but I wouldn't be confident
